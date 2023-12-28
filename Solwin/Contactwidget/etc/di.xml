@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Solwin\Contactwidget\Api\ContactwidgetRepositoryInterface" type="Solwin\Contactwidget\Model\ContactwidgetRepository"/>
+	<preference for="Solwin\Contactwidget\Api\Data\ContactwidgetInterface" type="Solwin\Contactwidget\Model\Contactwidget"/>
+	<preference for="Solwin\Contactwidget\Api\Data\ContactwidgetSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Solwin\Contactwidget\Model\ResourceModel\Contactwidget\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">solwin_contactwidget_demo</argument>
+            <argument name="resourceModel" xsi:type="string">Solwin\Contactwidget\Model\ResourceModel\Contactwidget\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="solwin_contactwidget_contactwidget_listing_data_source" xsi:type="string">Solwin\Contactwidget\Model\ResourceModel\Contactwidget\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

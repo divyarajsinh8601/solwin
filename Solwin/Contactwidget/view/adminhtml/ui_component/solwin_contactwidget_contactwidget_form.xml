@@ -1,0 +1,234 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">solwin_contactwidget_contactwidget_form.contactwidget_form_data_source</item>
+		</item>
+		<item name="label" xsi:type="string" translate="true">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button name="back" class="Solwin\Contactwidget\Block\Adminhtml\Contactwidget\Edit\BackButton"/>
+			<button name="delete" class="Solwin\Contactwidget\Block\Adminhtml\Contactwidget\Edit\DeleteButton"/>
+			<button name="save" class="Solwin\Contactwidget\Block\Adminhtml\Contactwidget\Edit\SaveButton"/>
+			<button name="save_and_continue" class="Solwin\Contactwidget\Block\Adminhtml\Contactwidget\Edit\SaveAndContinueButton"/>
+		</buttons>
+		<namespace>solwin_contactwidget_contactwidget_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>solwin_contactwidget_contactwidget_form.contactwidget_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="contactwidget_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider name="contactwidget_form_data_source" class="Solwin\Contactwidget\Model\Contactwidget\DataProvider">
+			<settings>
+				<requestFieldName>contactwidget_id</requestFieldName>
+				<primaryFieldName>contactwidget_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+		<field name="name" formElement="textarea" sortOrder="10">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contactwidget</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Name</label>
+				<dataScope>name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field name="email" formElement="textarea" sortOrder="20">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contactwidget</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Email</label>
+				<dataScope>email</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field name="telephone" formElement="textarea" sortOrder="30">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contactwidget</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Telephone</label>
+				<dataScope>telephone</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+        <field name="checked_number" formElement="radioset">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Checked Number</item>
+                    <item name="formElement" xsi:type="string">radioset</item>
+                    <item name="source" xsi:type="string">Contactwidget</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">checked_number</item>
+                    <item name="options" xsi:type="array">
+                        <item name="option1" xsi:type="array">
+                            <item name="value" xsi:type="string">option1</item>
+                            <item name="label" xsi:type="string" translate="true">Option 1</item>
+                        </item>
+                        <item name="option2" xsi:type="array">
+                            <item name="value" xsi:type="string">option2</item>
+                            <item name="label" xsi:type="string" translate="true">Option 2</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="choose_movie" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Choose Movie</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="default" xsi:type="number">1</item>
+                    <item name="dataScope" xsi:type="string">choose_movie</item>
+                </item>
+            </argument>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="favorite_name" formElement="multiselect">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Favorite Name</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">Contactwidget</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">favorite_name</item>
+                    <item name="options" xsi:type="array">
+                        <item name="option1" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Option 1</item>
+                            <item name="value" xsi:type="string">option1</item>
+                        </item>
+                        <item name="option2" xsi:type="array">
+                            <item name="label" xsi:type="string" translate="true">Option 2</item>
+                            <item name="value" xsi:type="string">option2</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="datepicker" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">DatePicker</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">Contactwidget</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">datepicker</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="Intrested" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Catalog\Model\Config\Source\Watermark\Position</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Intrested</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">Contactwidget</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="dataScope" xsi:type="string">Intrested</item>
+                </item>
+            </argument>
+        </field>
+        <field name="attachment">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="label" xsi:type="string" translate="true">Attachment</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="allowedExtensions" xsi:type="string">jpg jpeg png</item>
+                    <item name="maxFileSize" xsi:type="number">2097152</item>
+                    <item name="formElement" xsi:type="string">imageUploader</item>
+                    <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="dataScope" xsi:type="string">Contactwidget</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="solwin_contactwidget/contactwidget/upload">
+                            <param name="target_element_id">image</param>
+                            <param name="type">image</param>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+		<field name="subject" formElement="input" sortOrder="100">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contactwidget</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Subject</label>
+				<dataScope>subject</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+		<field name="comment" formElement="textarea" sortOrder="110">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Contactwidget</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Comment</label>
+				<dataScope>comment</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+	</fieldset>
+</form>
